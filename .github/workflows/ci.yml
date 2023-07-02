@@ -100,3 +100,7 @@ jobs:
     # Step: Execute the tests.
     - name: Run tests
       run: mix test
+    
+    - name: Dialyzer
+      run: mix dialyzer
+
