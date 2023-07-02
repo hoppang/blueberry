@@ -77,3 +77,17 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+import_config "dev.secret.exs"
+
+# ==========
+# dev.secret.exs example:
+
+# import Config
+
+# Configure your database
+# config :blueberry, Blueberry.Repo,
+#   username: "postgres",
+#   password: "abcd",
+#   hostname: "192.168.0.2",
+#   database: "blueberry_dev"
