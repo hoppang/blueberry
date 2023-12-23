@@ -53,7 +53,7 @@ if config_env() == :prod do
 
   config :blueberry, BlueberryWeb.Endpoint,
     server: true,
-    url: [host: host, port: 40443, scheme: "https"],
+    url: [host: host, port: 40843, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -63,7 +63,7 @@ if config_env() == :prod do
       port: port
     ],
     https: [
-      port: 40443,
+      port: 40843,
       cipher_suit: :strong,
       keyfile: System.get_env("BLUEBERRY_SSL_KEY_PATH"),
       certfile: System.get_env("BLUEBERRY_SSL_CERT_PATH")
