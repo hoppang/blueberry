@@ -7,7 +7,7 @@ defmodule BlueberryWeb.RequestLogger do
 
   def call(conn, _opts) do
     # Logger.warning("RequestLogger! #{inspect(conn, pretty: true)}")
-    Logger.info("Remote IP: #{inspect tuple_to_ipstr conn.remote_ip}")
+    Logger.info("Remote IP: #{inspect(tuple_to_ipstr(conn.remote_ip))}")
 
     conn
   end
