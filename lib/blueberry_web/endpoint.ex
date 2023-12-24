@@ -51,4 +51,5 @@ defmodule BlueberryWeb.Endpoint do
   plug(Plug.Head)
   plug(Plug.Session, @session_options)
   plug(BlueberryWeb.Router)
+  plug(BlueberryWeb.RequestLogger)
 end
