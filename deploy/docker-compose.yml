@@ -25,7 +25,8 @@ services:
       # .env 파일 필요
       MIX_ENV: prod
       BLUEBERRY_SRC_URL: ${BLUEBERRY_SRC_URL}
-      BLUEBERRY_DB_URL: ecto://postgres:1234@db:15432/blueberry
+      BLUEBERRY_DB_URL: ${BLUEBERRY_DB_URL}
+      BLUEBERRY_LOG_URL: ${BLUEBERRY_LOG_URL}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       BLUEBERRY_SSL_CERT_PATH: /cert/cert.pem
       BLUEBERRY_SSL_KEY_PATH: /cert/key.pem
