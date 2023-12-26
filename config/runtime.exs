@@ -20,22 +20,34 @@ if System.get_env("PHX_SERVER") do
   config :blueberry, BlueberryWeb.Endpoint, server: true
 end
 
+database_url =
+  System.get_env("BLUEBERRY_DB_URL") ||
+    raise """
+    environment variable BLUEBERRY_DB_URL is missing.
+    For example: ecto://USER:PASS@HOST/DATABASE
+    """
+
+log_url =
+  System.get_env("BLUEBERRY_LOG_URL") ||
+    raise """
+    environment variable BLUEBERRY_LOG_URL is missing.
+    For example: ecto://USER:PASS@HOST/DATABASE
+    """
+
+maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
+
+config :blueberry, Blueberry.Repo,
+  # ssl: true,
+  url: database_url,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  socket_options: maybe_ipv6
+
+config :blueberry, Blueberry.Log.Repo,
+  url: log_url,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  socket_options: maybe_ipv6
+
 if config_env() == :prod do
-  database_url =
-    System.get_env("BLUEBERRY_DB_URL") ||
-      raise """
-      environment variable BLUEBERRY_DB_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
-
-  maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
-
-  config :blueberry, Blueberry.Repo,
-    # ssl: true,
-    url: database_url,
-    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-    socket_options: maybe_ipv6
-
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want

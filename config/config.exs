@@ -8,7 +8,7 @@
 import Config
 
 config :blueberry,
-  ecto_repos: [Blueberry.Repo]
+  ecto_repos: [Blueberry.Repo, Blueberry.Log.Repo]
 
 # Configures the endpoint
 config :blueberry, BlueberryWeb.Endpoint,
