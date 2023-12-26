@@ -19,7 +19,7 @@ services:
       - "4000:4000"
       - "40843:40843"
     volumes:
-      - /home/hoppang/cert:/cert
+      - ${BLUEBERRY_SSL_PATH}:/cert
       - ./entrypoint.sh:/entrypoint.sh
     environment:
       # .env 파일 필요
@@ -27,7 +27,7 @@ services:
       BLUEBERRY_SRC_URL: ${BLUEBERRY_SRC_URL}
       BLUEBERRY_DB_URL: ecto://postgres:1234@db:15432/blueberry
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      BLUEBERRY_SSL_CERT_PATH: ${BLUEBERRY_SSL_CERT_PATH}
-      BLUEBERRY_SSL_KEY_PATH: ${BLUEBERRY_SSL_KEY_PATH}
+      BLUEBERRY_SSL_CERT_PATH: /cert/cert.pem
+      BLUEBERRY_SSL_KEY_PATH: /cert/key.pem
       PHX_HOST: ${PHX_HOST}
     entrypoint: ["/entrypoint.sh"]

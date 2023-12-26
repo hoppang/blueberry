@@ -13,6 +13,9 @@ on:
 # Sets the ENV `MIX_ENV` to `test` for running tests
 env:
   MIX_ENV: test
+  # 컨테이너 이름 같은거 쓰지 말고 그냥 localhost
+  BLUEBERRY_DB_URL: "ecto://postgres:postgres@localhost/blueberry_test"
+  BLUEBERRY_LOG_URL: "ecto://postgres:postgres@localhost/blueberry_log_test"
 
 permissions:
   contents: read

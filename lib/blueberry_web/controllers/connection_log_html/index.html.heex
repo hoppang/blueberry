@@ -1,0 +1,18 @@
+<h1>Connection Log</h1>
+
+<.link href={~p"/"} method="get" class="basic_link">Home</.link>
+
+<table class="log_table">
+    <tr>
+        <th class="log_table_cell">ID</th>
+        <th class="log_table_cell">IP</th>
+        <th class="log_table_cell">Country</th>
+    </tr>
+    <%= for item <- @items do %>
+    <tr>
+        <td class="log_table_cell"><%= item.id %></td>
+        <td class="log_table_cell"><%= item.ip %></td>
+        <td class="log_table_cell"><%= item.country %></td>
+    </tr>
+    <% end %>
+</table>

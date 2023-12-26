@@ -12,6 +12,7 @@ defmodule Blueberry.Application do
       BlueberryWeb.Telemetry,
       # Start the Ecto repository
       Blueberry.Repo,
+      Blueberry.Log.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: Blueberry.PubSub},
       # Start Finch

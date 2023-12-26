@@ -1457,6 +1457,20 @@ select {
 
 /* This file is for your main application CSS */
 
+.log_table {
+  border: 1px solid black;
+  margin: 0.5em;
+}
+
+.log_table_cell {
+  border: 1px solid gray;
+  padding: 0.2em;
+}
+
+.basic_link {
+  color: blue;
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }

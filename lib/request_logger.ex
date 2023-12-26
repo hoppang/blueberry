@@ -6,7 +6,8 @@ defmodule BlueberryWeb.RequestLogger do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    Logger.info("Remote IP: #{inspect(remote_ip(conn))}")
+    Logger.debug("Remote IP: #{inspect(remote_ip(conn))}")
+    Schema.LogConnection.insert(remote_ip(conn), "-")
 
     conn
   end
