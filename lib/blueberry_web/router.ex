@@ -18,6 +18,7 @@ defmodule BlueberryWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :home)
+    get("/connection_log", ConnectionLogController, :index)
   end
 
   # Other scopes may use custom stacks.

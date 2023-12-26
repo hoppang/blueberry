@@ -1,4 +1,4 @@
-defmodule Blueberry.LogConnection do
+defmodule Schema.LogConnection do
   use Ecto.Schema
 
   schema "log_connection" do
@@ -8,7 +8,7 @@ defmodule Blueberry.LogConnection do
 
   @spec insert(String.t(), String.t()) :: :ok
   def insert(ip, country) do
-    %Blueberry.LogConnection{ip: ip, country: country}
+    %Schema.LogConnection{ip: ip, country: country}
     |> Blueberry.Log.Repo.insert()
 
     :ok

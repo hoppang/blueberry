@@ -7,14 +7,14 @@ defmodule BlueberryWeb.RequestLogger do
 
   def call(conn, _opts) do
     Logger.debug("Remote IP: #{inspect(remote_ip(conn))}")
-    Blueberry.LogConnection.insert(remote_ip(conn), "-")
+    Schema.LogConnection.insert(remote_ip(conn), "-")
 
     conn
   end
 
   @doc """
   https://websymphony.net/blog/how-to-get-remote-ip-from-x-forwarded-for-in-phoenix/ 에서 가져옴
-  
+
   https://adam-p.ca/blog/2022/03/x-forwarded-for/ 이 문서에 따르면 x-forwarded-for 를 클라이언트 IP 판별에 쓰는 건 안 될 일이지만
   대안이 없잖아...
   (엄격한 클라이언트 IP 처리가 필요하면 https 레벨이 아닌 더 윗단계(방화벽이라던가) 에서 처리해야 할 듯)
