@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    restart: on-failure
+    ports:
+      - 15432:15432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "1234"
+    command: -p 15432
+  web:
+    image: elixir:latest
+    restart: always
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    ports:
+      - "4000:4000"
+      - "40843:40843"
+    volumes:
+      - /home/hoppang/cert:/cert
+      - ./entrypoint.sh:/entrypoint.sh
+    environment:
+      # .env 파일 필요
+      MIX_ENV: prod
+      BLUEBERRY_SRC_URL: ${BLUEBERRY_SRC_URL}
+      BLUEBERRY_DB_URL: ecto://postgres:1234@db:15432/blueberry
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      BLUEBERRY_SSL_CERT_PATH: ${BLUEBERRY_SSL_CERT_PATH}
+      BLUEBERRY_SSL_KEY_PATH: ${BLUEBERRY_SSL_KEY_PATH}
+      PHX_HOST: ${PHX_HOST}
+    entrypoint: ["/entrypoint.sh"]
