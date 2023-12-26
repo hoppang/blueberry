@@ -13,8 +13,6 @@ services:
   web:
     image: elixir:latest
     restart: always
-    stdin_open: true
-    tty: true
     depends_on:
       - db
     ports:
