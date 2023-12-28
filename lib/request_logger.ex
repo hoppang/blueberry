@@ -3,8 +3,10 @@ defmodule BlueberryWeb.RequestLogger do
 
   @behaviour Plug
 
+  @spec init(Keyword.t()) :: Keyword.t()
   def init(opts), do: opts
 
+  @spec call(Plug.Conn.t(), Keyword.t()) :: Plug.Conn.t()
   def call(conn, _opts) do
     Logger.debug("Remote IP: #{inspect(remote_ip(conn))}")
     Schema.ConnectionCount.upsert(remote_ip(conn), "-")
