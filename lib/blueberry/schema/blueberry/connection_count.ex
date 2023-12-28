@@ -1,4 +1,7 @@
 defmodule Schema.ConnectionCount do
+  @moduledoc """
+  페이지 접속 카운트 DB 테이블
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

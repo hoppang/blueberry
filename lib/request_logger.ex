@@ -1,4 +1,8 @@
 defmodule BlueberryWeb.RequestLogger do
+  @moduledoc """
+  모든 페이지 접속시 기록을 남기기 위한 모듈
+  """
+
   require Logger
 
   @behaviour Plug
