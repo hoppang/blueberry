@@ -10,6 +10,12 @@ import Config
 config :blueberry,
   ecto_repos: [Blueberry.Repo, Blueberry.Log.Repo]
 
+config :blueberry, Blueberry.Repo,
+  priv: "priv/repo/blueberry"
+
+config :blueberry, Blueberry.Log.Repo,
+  priv: "priv/repo/log"
+
 # Configures the endpoint
 config :blueberry, BlueberryWeb.Endpoint,
   url: [host: "localhost"],

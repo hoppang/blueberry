@@ -7,12 +7,14 @@
         <th class="log_table_cell">ID</th>
         <th class="log_table_cell">IP</th>
         <th class="log_table_cell">Country</th>
+        <th class="log_table_cell">Count</th>
     </tr>
     <%= for item <- @items do %>
     <tr>
         <td class="log_table_cell"><%= item.id %></td>
         <td class="log_table_cell"><%= item.ip %></td>
         <td class="log_table_cell"><%= item.country %></td>
+        <td class="log_table_cell"><%= item.count %></td>
     </tr>
     <% end %>
 </table>

@@ -6,12 +6,12 @@ defmodule BlueberryWeb.ConnectionLogController do
   @spec index(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def index(conn, _params) do
     items =
-      from(l in Schema.LogConnection)
+      from(l in Schema.ConnectionCount)
       |> order_by([l], desc: l.id)
       |> limit(300)
-      |> Blueberry.Log.Repo.all()
+      |> Blueberry.Repo.all()
       |> Enum.map(fn item ->
-        %{id: item.id, ip: item.ip, country: item.country}
+        %{id: item.id, ip: item.ip, country: item.country, count: item.count}
       end)
 
     render(conn, :index, layout: false, items: items)

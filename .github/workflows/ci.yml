@@ -109,4 +109,9 @@ jobs:
       env:
         MIX_ENV: dev
 
+    - name: Credo
+      run: mix credo --strict
+      env:
+        MIX_ENV: dev
+
 

@@ -1,13 +1,19 @@
 defmodule BlueberryWeb.RequestLogger do
+  @moduledoc """
+  모든 페이지 접속시 기록을 남기기 위한 모듈
+  """
+
   require Logger
 
   @behaviour Plug
 
+  @spec init(Keyword.t()) :: Keyword.t()
   def init(opts), do: opts
 
+  @spec call(Plug.Conn.t(), Keyword.t()) :: Plug.Conn.t()
   def call(conn, _opts) do
     Logger.debug("Remote IP: #{inspect(remote_ip(conn))}")
-    Schema.LogConnection.insert(remote_ip(conn), "-")
+    Schema.ConnectionCount.upsert(remote_ip(conn), "-")
 
     conn
   end
