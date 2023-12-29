@@ -1,4 +1,7 @@
 defmodule Blueberry.Books.Review do
+  @moduledoc """
+  서평 정보 DB 테이블 모듈
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
