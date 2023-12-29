@@ -14,6 +14,6 @@ defmodule BlueberryWeb.ConnectionLogController do
         %{id: item.id, ip: item.ip, country: item.country, count: item.count}
       end)
 
-    render(conn, :index, layout: false, items: items)
+    render(conn, :index, layout: {BlueberryWeb.Layouts, :app}, items: items)
   end
 end
