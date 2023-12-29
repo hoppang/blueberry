@@ -20,7 +20,7 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
         phx-submit="save"
       >
         <.input field={@form[:title]} type="text" label="Title" />
-        <.input field={@form[:score]} type="number" label="Score" />
+        <.input field={@form[:score]} type="number" label="Score" min="1" max="5" />
         <.input field={@form[:comment]} type="text" label="Comment" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Review</.button>
