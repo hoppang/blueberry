@@ -20,12 +20,12 @@ defmodule BlueberryWeb.Router do
     get("/", PageController, :home)
     get("/connection_log", ConnectionLogController, :index)
 
-    live "/reviews", ReviewLive.Index, :index
-    live "/reviews/new", ReviewLive.Index, :new
-    live "/reviews/:id/edit", ReviewLive.Index, :edit
+    live("/reviews", ReviewLive.Index, :index)
+    live("/reviews/new", ReviewLive.Index, :new)
+    live("/reviews/:id/edit", ReviewLive.Index, :edit)
 
-    live "/reviews/:id", ReviewLive.Show, :show
-    live "/reviews/:id/show/edit", ReviewLive.Show, :edit
+    live("/reviews/:id", ReviewLive.Show, :show)
+    live("/reviews/:id/show/edit", ReviewLive.Show, :edit)
   end
 
   # Other scopes may use custom stacks.

@@ -3,9 +3,9 @@ defmodule Blueberry.Books.Review do
   import Ecto.Changeset
 
   schema "reviews" do
-    field :title, :string
-    field :comment, :string
-    field :score, :integer
+    field(:title, :string)
+    field(:comment, :string)
+    field(:score, :integer)
 
     timestamps()
   end
