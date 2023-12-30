@@ -73,6 +73,23 @@ defmodule Blueberry.Books do
     |> Repo.update()
   end
 
+  @spec find_review(integer(), String.t()) ::
+          :ok | {:error, :password_not_match | :review_not_exists}
+  def find_review(id, password) do
+    Repo.get(Review, id)
+    |> case do
+      nil ->
+        {:error, :review_not_exists}
+
+      review ->
+        if review.password == password do
+          :ok
+        else
+          {:error, :password_not_match}
+        end
+    end
+  end
+
   @doc """
   Deletes a review.
 

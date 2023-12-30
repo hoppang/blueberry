@@ -5,6 +5,8 @@ defmodule Blueberry.Books.Review do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @type t :: %Blueberry.Books.Review{}
+
   schema "reviews" do
     field(:title, :string)
     field(:comment, :string)
