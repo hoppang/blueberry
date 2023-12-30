@@ -1,0 +1,60 @@
+#: lib/blueberry_web/live/review_live/index.ex:25
+#: lib/blueberry_web/live/review_live/index.html.heex:5
+#, elixir-autogen
+msgid "New Review"
+msgstr "서평쓰기"
+
+#: lib/blueberry_web/components/core_components.ex:481
+#, elixir-autogen, elixir-format
+msgid "Actions"
+msgstr ""
+
+#: lib/blueberry_web/live/review_live/index.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Listing Reviews"
+msgstr "목록"
+
+#: lib/blueberry_web/components/core_components.ex:78
+#: lib/blueberry_web/components/core_components.ex:130
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr "닫기"
+
+#: lib/blueberry_web/live/review_live/form_component.ex:22
+#: lib/blueberry_web/live/review_live/index.html.heex:15
+#: lib/blueberry_web/live/review_live/show.html.heex:12
+#, elixir-autogen
+msgid "Title"
+msgstr "제목"
+
+#: lib/blueberry_web/live/review_live/form_component.ex:24
+#: lib/blueberry_web/live/review_live/index.html.heex:17
+#, elixir-autogen, elixir-format
+msgid "Comment"
+msgstr "한줄평"
+
+#: lib/blueberry_web/live/review_live/form_component.ex:23
+#: lib/blueberry_web/live/review_live/index.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Score"
+msgstr "평점"
+
+#: lib/blueberry_web/live/review_live/form_component.ex:12
+#, elixir-autogen, elixir-format
+msgid "Leave score and simple comment."
+msgstr "점수와 간단한 평을 남겨 보세요."
+
+#: lib/blueberry_web/live/review_live/form_component.ex:26
+#, elixir-autogen, elixir-format
+msgid "저장"
+msgstr ""
+
+#: lib/blueberry_web/live/review_live/index.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "삭제"
+msgstr ""
+
+#: lib/blueberry_web/live/review_live/index.html.heex:22
+#, elixir-autogen, elixir-format
+msgid "편집"
+msgstr ""

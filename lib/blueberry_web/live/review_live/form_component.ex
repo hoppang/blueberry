@@ -9,7 +9,7 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage review records in your database.</:subtitle>
+        <:subtitle><%= gettext("Leave score and simple comment.") %></:subtitle>
       </.header>
 
       <.simple_form
@@ -19,11 +19,11 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:title]} type="text" label="Title" />
-        <.input field={@form[:score]} type="number" label="Score" min="1" max="5" />
-        <.input field={@form[:comment]} type="text" label="Comment" />
+        <.input field={@form[:title]} type="text" label={gettext("Title")} />
+        <.input field={@form[:score]} type="number" label={gettext("Score")} min="1" max="5" />
+        <.input field={@form[:comment]} type="text" label={gettext("Comment")} />
         <:actions>
-          <.button phx-disable-with="Saving...">Save Review</.button>
+          <.button phx-disable-with="Saving..."><%= gettext("저장") %></.button>
         </:actions>
       </.simple_form>
     </div>

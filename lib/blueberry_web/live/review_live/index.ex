@@ -22,7 +22,7 @@ defmodule BlueberryWeb.ReviewLive.Index do
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Review")
+    |> assign(:page_title, gettext("New Review"))
     |> assign(:review, %Review{})
   end
 
