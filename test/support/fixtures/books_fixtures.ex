@@ -13,7 +13,8 @@ defmodule Blueberry.BooksFixtures do
       |> Enum.into(%{
         title: "some title",
         comment: "some comment",
-        score: 42
+        score: 42,
+        password: "1234"
       })
       |> Blueberry.Books.create_review()
 

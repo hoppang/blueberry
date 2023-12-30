@@ -4,8 +4,13 @@ defmodule BlueberryWeb.ReviewLiveTest do
   import Phoenix.LiveViewTest
   import Blueberry.BooksFixtures
 
-  @create_attrs %{title: "some title", comment: "some comment", score: 42}
-  @update_attrs %{title: "some updated title", comment: "some updated comment", score: 43}
+  @create_attrs %{title: "some title", comment: "some comment", score: 42, password: "1234"}
+  @update_attrs %{
+    title: "some updated title",
+    comment: "some updated comment",
+    score: 43,
+    password: "1234"
+  }
   @invalid_attrs %{title: nil, comment: nil, score: nil}
 
   defp create_review(_) do
@@ -26,8 +31,8 @@ defmodule BlueberryWeb.ReviewLiveTest do
     test "saves new review", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, ~p"/reviews")
 
-      assert index_live |> element("a", "New Review") |> render_click() =~
-               "New Review"
+      assert index_live |> element("a", "서평쓰기") |> render_click() =~
+               "서평쓰기"
 
       assert_patch(index_live, ~p"/reviews/new")
 
@@ -42,14 +47,14 @@ defmodule BlueberryWeb.ReviewLiveTest do
       assert_patch(index_live, ~p"/reviews")
 
       html = render(index_live)
-      assert html =~ "Review created successfully"
+      assert html =~ "서평을 기록했습니다."
       assert html =~ "some title"
     end
 
     test "updates review in listing", %{conn: conn, review: review} do
       {:ok, index_live, _html} = live(conn, ~p"/reviews")
 
-      assert index_live |> element("#reviews-#{review.id} a", "Edit") |> render_click() =~
+      assert index_live |> element("#reviews-#{review.id} a", "편집") |> render_click() =~
                "Edit Review"
 
       assert_patch(index_live, ~p"/reviews/#{review}/edit")
@@ -65,14 +70,14 @@ defmodule BlueberryWeb.ReviewLiveTest do
       assert_patch(index_live, ~p"/reviews")
 
       html = render(index_live)
-      assert html =~ "Review updated successfully"
+      assert html =~ "서평을 수정했습니다."
       assert html =~ "some updated title"
     end
 
     test "deletes review in listing", %{conn: conn, review: review} do
       {:ok, index_live, _html} = live(conn, ~p"/reviews")
 
-      assert index_live |> element("#reviews-#{review.id} a", "Delete") |> render_click()
+      assert index_live |> element("#reviews-#{review.id} a", "삭제") |> render_click()
       refute has_element?(index_live, "#reviews-#{review.id}")
     end
   end
@@ -106,7 +111,7 @@ defmodule BlueberryWeb.ReviewLiveTest do
       assert_patch(show_live, ~p"/reviews/#{review}")
 
       html = render(show_live)
-      assert html =~ "Review updated successfully"
+      assert html =~ "서평을 수정했습니다."
       assert html =~ "some updated title"
     end
   end

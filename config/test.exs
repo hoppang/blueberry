@@ -32,12 +32,9 @@ config :logger, level: :warning
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# 테스트는 영어 로케일로
-config :gettext, default_locale: "en"
-
-if File.exists?("config/dev.secret.exs") do
+if File.exists?("config/test.secret.exs") do
   IO.puts("secret.exs found")
-  import_config "dev.secret.exs"
+  import_config "test.secret.exs"
 else
   IO.puts("secret.exs not found")
 end

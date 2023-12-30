@@ -21,7 +21,7 @@ defmodule Blueberry.BooksTest do
     end
 
     test "create_review/1 with valid data creates a review" do
-      valid_attrs = %{title: "some title", comment: "some comment", score: 42}
+      valid_attrs = %{title: "some title", comment: "some comment", score: 42, password: "1234"}
 
       assert {:ok, %Review{} = review} = Books.create_review(valid_attrs)
       assert review.title == "some title"
