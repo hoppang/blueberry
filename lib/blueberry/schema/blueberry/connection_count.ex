@@ -8,7 +8,7 @@ defmodule Schema.ConnectionCount do
   schema "connection_count" do
     field(:ip, :string)
     field(:country, :string)
-    field(:count, :integer)
+    field(:count, :integer, default: 1)
   end
 
   @spec changeset(Ecto.Schema.t(), map()) :: Ecto.Changeset.t()
