@@ -42,12 +42,14 @@ msgstr ""
 
 #: lib/blueberry_web/live/review_live/form_component.ex:24
 #: lib/blueberry_web/live/review_live/index.html.heex:17
+#: lib/blueberry_web/live/review_live/show.html.heex:14
 #, elixir-autogen, elixir-format
 msgid "Comment"
 msgstr ""
 
 #: lib/blueberry_web/live/review_live/form_component.ex:23
 #: lib/blueberry_web/live/review_live/index.html.heex:16
+#: lib/blueberry_web/live/review_live/show.html.heex:13
 #, elixir-autogen, elixir-format
 msgid "Score"
 msgstr ""
@@ -57,7 +59,7 @@ msgstr ""
 msgid "Leave score and simple comment."
 msgstr ""
 
-#: lib/blueberry_web/live/review_live/form_component.ex:26
+#: lib/blueberry_web/live/review_live/form_component.ex:27
 #, elixir-autogen, elixir-format
 msgid "저장"
 msgstr "Save"
@@ -71,3 +73,8 @@ msgstr "Delete"
 #, elixir-autogen, elixir-format
 msgid "편집"
 msgstr "Edit"
+
+#: lib/blueberry_web/live/review_live/form_component.ex:25
+#, elixir-autogen, elixir-format
+msgid "비밀번호"
+msgstr ""

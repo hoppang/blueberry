@@ -22,6 +22,7 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
         <.input field={@form[:title]} type="text" label={gettext("Title")} />
         <.input field={@form[:score]} type="number" label={gettext("Score")} min="1" max="5" />
         <.input field={@form[:comment]} type="text" label={gettext("Comment")} />
+        <.input field={@form[:password]} type="password" label={gettext("비밀번호")} />
         <:actions>
           <.button phx-disable-with="Saving..."><%= gettext("저장") %></.button>
         </:actions>
