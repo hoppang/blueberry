@@ -5,18 +5,23 @@ defmodule Blueberry.Books.Review do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @type t :: %Blueberry.Books.Review{}
+
   schema "reviews" do
     field(:title, :string)
     field(:comment, :string)
     field(:score, :integer)
+    field(:password, :string)
 
     timestamps()
   end
 
+  @allowed [:title, :score, :comment, :password]
+
   @doc false
   def changeset(review, attrs) do
     review
-    |> cast(attrs, [:title, :score, :comment])
-    |> validate_required([:title, :score, :comment])
+    |> cast(attrs, @allowed)
+    |> validate_required(@allowed)
   end
 end

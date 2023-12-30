@@ -9,9 +9,9 @@
 </.header>
 
 <.list>
-  <:item title="Title"><%= @review.title %></:item>
-  <:item title="Score"><%= @review.score %></:item>
-  <:item title="Comment"><%= @review.comment %></:item>
+  <:item title={gettext("Title")}><%= @review.title %></:item>
+  <:item title={gettext("Score")}><%= @review.score %></:item>
+  <:item title={gettext("Comment")}><%= @review.comment %></:item>
 </.list>
 
 <.back navigate={~p"/reviews"}>Back to reviews</.back>

@@ -9,7 +9,7 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
     <div>
       <.header>
         <%= @title %>
-        <:subtitle>Use this form to manage review records in your database.</:subtitle>
+        <:subtitle><%= gettext("Leave score and simple comment.") %></:subtitle>
       </.header>
 
       <.simple_form
@@ -19,11 +19,12 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:title]} type="text" label="Title" />
-        <.input field={@form[:score]} type="number" label="Score" min="1" max="5" />
-        <.input field={@form[:comment]} type="text" label="Comment" />
+        <.input field={@form[:title]} type="text" label={gettext("Title")} />
+        <.input field={@form[:score]} type="number" label={gettext("Score")} min="1" max="5" />
+        <.input field={@form[:comment]} type="text" label={gettext("Comment")} />
+        <.input field={@form[:password]} type="password" label={gettext("비밀번호")} value="" />
         <:actions>
-          <.button phx-disable-with="Saving...">Save Review</.button>
+          <.button phx-disable-with="Saving..."><%= gettext("저장") %></.button>
         </:actions>
       </.simple_form>
     </div>
@@ -54,18 +55,38 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
     save_review(socket, socket.assigns.action, review_params)
   end
 
+  @spec save_review(Phoenix.LiveView.Socket.t(), :new | :edit, Blueberry.Books.Review.t()) ::
+          {:noreply, Phoenix.LiveView.Socket.t()}
   defp save_review(socket, :edit, review_params) do
-    case Books.update_review(socket.assigns.review, review_params) do
-      {:ok, review} ->
-        notify_parent({:saved, review})
+    review = socket.assigns.review
+    id = review.id
 
+    case Books.find_review(id, Map.get(review_params, "password", "")) do
+      :ok ->
+        case Books.update_review(review, review_params) do
+          {:ok, review} ->
+            notify_parent({:saved, review})
+
+            {:noreply,
+             socket
+             |> put_flash(:info, gettext("서평을 수정했습니다."))
+             |> push_patch(to: socket.assigns.patch)}
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            {:noreply, assign_form(socket, changeset)}
+        end
+
+      {:error, :review_not_exists} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Review updated successfully")
+         |> put_flash(:error, gettext("서평이 없습니다."))
          |> push_patch(to: socket.assigns.patch)}
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign_form(socket, changeset)}
+      {:error, :password_not_match} ->
+        {:noreply,
+         socket
+         |> put_flash(:error, gettext("비밀번호가 틀립니다."))
+         |> push_patch(to: socket.assigns.patch)}
     end
   end
 
@@ -76,7 +97,7 @@ defmodule BlueberryWeb.ReviewLive.FormComponent do
 
         {:noreply,
          socket
-         |> put_flash(:info, "Review created successfully")
+         |> put_flash(:info, gettext("서평을 기록했습니다."))
          |> push_patch(to: socket.assigns.patch)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

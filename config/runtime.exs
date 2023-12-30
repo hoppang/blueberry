@@ -21,14 +21,14 @@ if System.get_env("PHX_SERVER") do
 end
 
 database_url =
-  System.get_env("BLUEBERRY_DB_URL") ||
+  "#{System.get_env("BLUEBERRY_DB_URL")}_#{config_env()}" ||
     raise """
     environment variable BLUEBERRY_DB_URL is missing.
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
 log_url =
-  System.get_env("BLUEBERRY_LOG_URL") ||
+  "#{System.get_env("BLUEBERRY_LOG_URL")}_#{config_env()}" ||
     raise """
     environment variable BLUEBERRY_LOG_URL is missing.
     For example: ecto://USER:PASS@HOST/DATABASE
